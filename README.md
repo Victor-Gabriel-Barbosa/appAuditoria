@@ -25,8 +25,9 @@ Para executar este projeto localmente, necessita de ter instalado:
 
 Antes de iniciar a aplicação, certifique-se de que o seu servidor MySQL está a correr na porta `3306` e execute as seguintes configurações:
 
-1.  Crie uma base de dados com o nome `appauditoria`.
-2.  A aplicação está configurada por defeito para ligar com as seguintes credenciais:
+1. Crie uma base de dados no MySQL com o nome `appauditoria`.
+2. Importe o ficheiro de estrutura localizado em `sql/appauditoria.sql` para criar as tabelas necessárias.
+3. A aplicação está configurada por defeito para ligar com as seguintes credenciais:
     * **URL:** `jdbc:mysql://localhost:3306/appauditoria`
     * **Utilizador:** `root`
     * **Palavra-passe:** `mysql`
