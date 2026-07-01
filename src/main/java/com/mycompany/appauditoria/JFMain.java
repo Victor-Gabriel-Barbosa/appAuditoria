@@ -43,11 +43,6 @@ public class JFMain extends javax.swing.JFrame {
     public JFMain(Integer perfilId, String usuarioCpfLogado) {
         this.usuarioCpfLogado = usuarioCpfLogado;
         initComponents();
-        setIconImage(
-            new ImageIcon(
-                getClass().getResource("/imgs/logo.png")
-            ).getImage()
-        );  
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         configurarTema();
 
@@ -61,8 +56,6 @@ public class JFMain extends javax.swing.JFrame {
                 jMConsGerente.setVisible(false);
             }
             case 3 -> {
-                jMCadProduto.setVisible(false);
-                jMConsProduto.setVisible(false);
                 jMCadGerente.setVisible(false);
                 jMConsGerente.setVisible(false);
             }
@@ -95,6 +88,7 @@ public class JFMain extends javax.swing.JFrame {
         jMConsGerente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/imgs/logo.png")).getImage());
 
         javax.swing.GroupLayout jDMenuLayout = new javax.swing.GroupLayout(jDMenu);
         jDMenu.setLayout(jDMenuLayout);

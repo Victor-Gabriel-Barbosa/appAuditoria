@@ -29,11 +29,6 @@ public class JFLogin extends javax.swing.JFrame {
      */
     public JFLogin() {
         initComponents();
-        setIconImage(
-            new ImageIcon(
-                getClass().getResource("/imgs/logo.png")
-            ).getImage()
-        );
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
@@ -56,6 +51,7 @@ public class JFLogin extends javax.swing.JFrame {
         jPSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/imgs/logo.png")).getImage());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -157,7 +153,7 @@ public class JFLogin extends javax.swing.JFrame {
             
             if (perfilId == null || perfilId == -1) {
                 JOptionPane.showMessageDialog(
-                    this, "Usuário ou senha inválidos.", 
+                    this, "Usuário e/ou senha inválidos.", 
                     "Aviso", 
                     JOptionPane.WARNING_MESSAGE
                 );
