@@ -11,10 +11,41 @@
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRTema">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+QUOTE"/>
+                </Property>
                 <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRTemaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+B"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/logout.svg&quot;, 20, 20)" type="code"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sair"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+X"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/close.svg&quot;, 20, 20)" type="code"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Fechar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -26,6 +57,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMCadProduto">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+P"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/package.svg&quot;, 20, 20)" type="code"/>
                 </Property>
@@ -38,6 +72,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMCadFuncionario">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+F"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/person-apron.svg&quot;, 20, 20)" type="code"/>
                 </Property>
@@ -49,6 +86,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMCadGerente">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+G"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/manage-accounts.svg&quot;, 20, 20)" type="code"/>
                 </Property>
@@ -67,6 +107,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMConsProduto">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+P"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/package.svg&quot;, 20, 20)" type="code"/>
                 </Property>
@@ -78,6 +121,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMConsFuncionario">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+F"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/person-apron.svg&quot;, 20, 20)" type="code"/>
                 </Property>
@@ -89,6 +135,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMConsGerente">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+G"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new com.formdev.flatlaf.extras.FlatSVGIcon(&quot;imgs/manage-accounts.svg&quot;, 20, 20)" type="code"/>
                 </Property>

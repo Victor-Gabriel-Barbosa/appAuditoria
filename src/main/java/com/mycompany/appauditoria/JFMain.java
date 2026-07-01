@@ -78,6 +78,8 @@ public class JFMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jRTema = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMCadProduto = new javax.swing.JMenuItem();
         jMCadFuncionario = new javax.swing.JMenuItem();
@@ -103,25 +105,41 @@ public class JFMain extends javax.swing.JFrame {
 
         jMenu1.setText("Arquivo");
 
+        jRTema.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_QUOTE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jRTema.setSelected(true);
         jRTema.addActionListener(this::jRTemaActionPerformed);
         jMenu1.add(jRTema);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/logout.svg", 20, 20));
+        jMenuItem1.setText("Sair");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem2.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/close.svg", 20, 20));
+        jMenuItem2.setText("Fechar");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Cadastro");
 
+        jMCadProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMCadProduto.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/package.svg", 20, 20));
         jMCadProduto.setText("Produto");
         jMCadProduto.setToolTipText("");
         jMCadProduto.addActionListener(this::jMCadProdutoActionPerformed);
         jMenu2.add(jMCadProduto);
 
+        jMCadFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMCadFuncionario.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/person-apron.svg", 20, 20));
         jMCadFuncionario.setText("Funcionário");
         jMCadFuncionario.addActionListener(this::jMCadFuncionarioActionPerformed);
         jMenu2.add(jMCadFuncionario);
 
+        jMCadGerente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMCadGerente.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/manage-accounts.svg", 20, 20));
         jMCadGerente.setText("Gerente");
         jMCadGerente.addActionListener(this::jMCadGerenteActionPerformed);
@@ -131,16 +149,19 @@ public class JFMain extends javax.swing.JFrame {
 
         jMenu3.setText("Consulta");
 
+        jMConsProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMConsProduto.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/package.svg", 20, 20));
         jMConsProduto.setText("Produto");
         jMConsProduto.addActionListener(this::jMConsProdutoActionPerformed);
         jMenu3.add(jMConsProduto);
 
+        jMConsFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMConsFuncionario.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/person-apron.svg", 20, 20));
         jMConsFuncionario.setText("Funcionário");
         jMConsFuncionario.addActionListener(this::jMConsFuncionarioActionPerformed);
         jMenu3.add(jMConsFuncionario);
 
+        jMConsGerente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMConsGerente.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/manage-accounts.svg", 20, 20));
         jMConsGerente.setText("Gerente");
         jMConsGerente.addActionListener(this::jMConsGerenteActionPerformed);
@@ -216,6 +237,16 @@ public class JFMain extends javax.swing.JFrame {
         FlatLaf.updateUI();
     }//GEN-LAST:event_jRTemaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JFrame login = new JFLogin(); 
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDMenu;
     private javax.swing.JMenuItem jMCadFuncionario;
@@ -228,6 +259,8 @@ public class JFMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRTema;
     // End of variables declaration//GEN-END:variables
 }
