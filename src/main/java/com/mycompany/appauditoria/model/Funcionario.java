@@ -56,7 +56,6 @@ public class Funcionario {
     }
 
     public final void setFuncao(String funcao) {
-        if (funcao == null || funcao.isBlank()) throw new IllegalArgumentException("Função é obrigatória.");
         this.funcao = funcao;
     }
 }

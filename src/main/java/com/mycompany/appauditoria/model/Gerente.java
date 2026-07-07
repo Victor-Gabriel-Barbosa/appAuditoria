@@ -56,7 +56,6 @@ public class Gerente {
     }
 
     public final void setArea(String area) {
-        if (area == null || area.isBlank()) throw new IllegalArgumentException("Área é obrigatória.");
         this.area = area;
     }
 }
