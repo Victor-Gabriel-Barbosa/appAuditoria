@@ -31,7 +31,6 @@ public class JFMain extends javax.swing.JFrame {
             jRTema.setIcon(new FlatSVGIcon("imgs/light-mode.svg", 20, 20));
             jRTema.setText("Tema Claro");
         }
-
     }
 
     /**
@@ -47,17 +46,22 @@ public class JFMain extends javax.swing.JFrame {
         configurarTema();
 
         switch (perfilId) {
+            // Administrador pode acessar gerentes e funcionários
             case 1 -> {
-                // jMCadProduto.setVisible(false);
-                // jMConsProduto.setVisible(false);
+                jMCadProduto.setVisible(false);
+                jMConsProduto.setVisible(false);
             }
+            // Gerente pode acessar funcionários e produtos
             case 2 -> {
                 jMCadGerente.setVisible(false);
                 jMConsGerente.setVisible(false);
             }
+            // Funcionário pode acessar produtos
             case 3 -> {
                 jMCadGerente.setVisible(false);
                 jMConsGerente.setVisible(false);
+                jMCadFuncionario.setVisible(false);
+                jMConsFuncionario.setVisible(false);
             }
 
             default ->
@@ -124,7 +128,7 @@ public class JFMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Cadastro");
+        jMenu2.setText("Cadastrar");
 
         jMCadProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMCadProduto.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/package.svg", 20, 20));
@@ -147,7 +151,7 @@ public class JFMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Consulta");
+        jMenu3.setText("Consultar");
 
         jMConsProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMConsProduto.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon("imgs/package.svg", 20, 20));

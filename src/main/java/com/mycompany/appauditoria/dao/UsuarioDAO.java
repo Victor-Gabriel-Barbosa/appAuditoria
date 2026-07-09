@@ -39,6 +39,7 @@ public class UsuarioDAO {
         }
     }
 
+    // Cadastra um novo usuário no banco de dados
     public void cadastrarUsuario(Usuario usuario, Connection conn, String usuarioCpfLogado) throws SQLException {
         try (PreparedStatement psSession = conn.prepareStatement("SET @usuario_logado_cpf = ?")) {
             psSession.setString(1, usuarioCpfLogado);
