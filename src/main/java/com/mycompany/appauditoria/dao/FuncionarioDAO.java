@@ -42,26 +42,42 @@ public class FuncionarioDAO {
     }
     
     // Busca todos os funcionários cadastrados no banco de dados
-    public List<Funcionario> listarTodos() throws SQLException {
+    public List<Funcionario> listarTodos(String usuarioCpfLogado) throws SQLException {
         String sql = "SELECT * FROM funcionario";
         List<Funcionario> listaFuncionarios = new ArrayList<>();
 
-        try (Connection conn = getConnection(); 
-             PreparedStatement ps = conn.prepareStatement(sql); 
-             ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = getConnection()) {
+            try (PreparedStatement ps = conn.prepareStatement(sql); 
+                ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                Funcionario funcionario = new Funcionario(
-                    rs.getString("cpf"),
-                    rs.getString("nome"),
-                    rs.getString("telefone"),
-                    rs.getString("funcao")
-                );
-                
-                listaFuncionarios.add(funcionario);
+                while (rs.next()) {
+                    Funcionario funcionario = new Funcionario(
+                        rs.getString("cpf"),
+                        rs.getString("nome"),
+                        rs.getString("telefone"),
+                        rs.getString("funcao")
+                    );
+                    
+                    listaFuncionarios.add(funcionario);
+                }
             }
+            
+            auditarListagem(conn, usuarioCpfLogado, "funcionario");
         }
         return listaFuncionarios;
+    }
+    
+    // Registra a listagem de funcionários na tabela de auditoria
+    private void auditarListagem(Connection conn, String usuarioCpfLogado, String tabela) {
+        String sql = "INSERT INTO auditoria (usuarioCpf, tabelaAfetada, operacao, registroId, dadosAntigos, dadosNovos) VALUES (?, ?, 'SELECT', 'TODOS', NULL, NULL)";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, usuarioCpfLogado);
+            ps.setString(2, tabela);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao gravar auditoria de listagem (" + tabela + "): " + e.getMessage());
+        }
     }
     
     // Atualiza os dados de um funcionário no banco de dados

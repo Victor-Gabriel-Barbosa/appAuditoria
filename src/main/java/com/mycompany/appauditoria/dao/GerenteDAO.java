@@ -42,24 +42,42 @@ public class GerenteDAO {
     }
 
     // Busca todos os gerentes cadastrados no banco de dados
-    public List<Gerente> listarTodos() throws SQLException {
+    public List<Gerente> listarTodos(String usuarioCpfLogado) throws SQLException {
         String sql = "SELECT * FROM gerente";
         List<Gerente> listaGerentes = new ArrayList<>();
 
-        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = getConnection()) {
+            try (PreparedStatement ps = conn.prepareStatement(sql); 
+                ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                Gerente gerente = new Gerente(
-                    rs.getString("cpf"),
-                    rs.getString("nome"),
-                    rs.getString("telefone"),
-                    rs.getString("area")
-                );
+                while (rs.next()) {
+                    Gerente gerente = new Gerente(
+                        rs.getString("cpf"),
+                        rs.getString("nome"),
+                        rs.getString("telefone"),
+                        rs.getString("area")
+                    );
 
-                listaGerentes.add(gerente);
+                    listaGerentes.add(gerente);
+                }
             }
+            
+            auditarListagem(conn, usuarioCpfLogado, "gerente");
         }
         return listaGerentes;
+    }
+    
+    // Registra a listagem de gerentes na tabela de auditoria
+    private void auditarListagem(Connection conn, String usuarioCpfLogado, String tabela) {
+        String sql = "INSERT INTO auditoria (usuarioCpf, tabelaAfetada, operacao, registroId, dadosAntigos, dadosNovos) VALUES (?, ?, 'SELECT', 'TODOS', NULL, NULL)";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, usuarioCpfLogado);
+            ps.setString(2, tabela);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao gravar auditoria de listagem (" + tabela + "): " + e.getMessage());
+        }
     }
 
     // Atualiza os dados de um gerente no banco de dados

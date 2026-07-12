@@ -34,7 +34,7 @@ public class JFConsProduto extends javax.swing.JInternalFrame {
         tableModel.setNumRows(0);
         
         try {
-            for (Produto produto : produtoDAO.listarTodos()) {
+            for (Produto produto : produtoDAO.listarTodos(usuarioCpfLogado)) {
                 tableModel.addRow(new Object[]{
                     produto.getCodigo(),
                     produto.getDescricao(),

@@ -22,6 +22,8 @@ public class UsuarioDAO {
     // Autentica um usuário utilizando CPF e senha
     public Integer autenticar(String cpf, String senha) throws SQLException {
         String sql = "SELECT perfilId, senha FROM usuario WHERE cpf = ?";
+        Integer resultadoPerfil = null;
+        boolean sucesso = false;
 
         try (
             Connection conn = getConnection();
@@ -29,13 +31,37 @@ public class UsuarioDAO {
         ) {
             ps.setString(1, cpf);
             try (ResultSet rs = ps.executeQuery()) {
-                if (!rs.next()) return null;
+                if (rs.next()) {
+                    String hash = rs.getString("senha");
+                    int perfilId = rs.getInt("perfilId");
 
-                String hash = rs.getString("senha");
-                int perfilId = rs.getInt("perfilId");
-
-                return (BCrypt.checkpw(senha, hash)) ? perfilId : -1;
+                    if (BCrypt.checkpw(senha, hash)) {
+                        resultadoPerfil = perfilId;
+                        sucesso = true;
+                    } else resultadoPerfil = -1;
+                }
             }
+
+            auditarLogin(conn, cpf, sucesso);
+
+            return resultadoPerfil;
+        }
+    }
+    
+    // Registra o login na tabela de auditoria
+    private void auditarLogin(Connection conn, String cpfTentativa, boolean sucesso) {
+        String sql = "INSERT INTO auditoria (usuarioCpf, tabelaAfetada, operacao, registroId, dadosAntigos, dadosNovos) VALUES (?, 'usuario', 'LOGIN', ?, NULL, ?)";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, cpfTentativa);
+            ps.setString(2, cpfTentativa);
+            
+            String dadosNovos = "{\"sucesso\": " + sucesso + "}";
+            ps.setString(3, dadosNovos);
+            
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao gravar auditoria de login: " + e.getMessage());
         }
     }
 

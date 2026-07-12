@@ -33,7 +33,7 @@ public class JFConsGerente extends javax.swing.JInternalFrame {
         tableModel.setNumRows(0);
         
         try {
-            for (Gerente gerente : gerenteDAO.listarTodos()) {
+            for (Gerente gerente : gerenteDAO.listarTodos(usuarioCpfLogado)) {
                 tableModel.addRow(new Object[]{
                     gerente.getCpf(),
                     gerente.getNome(),

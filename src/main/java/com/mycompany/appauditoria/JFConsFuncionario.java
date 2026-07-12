@@ -33,7 +33,7 @@ public class JFConsFuncionario extends javax.swing.JInternalFrame {
         tableModel.setNumRows(0);
         
         try {
-            for (Funcionario funcionario : funcionarioDAO.listarTodos()) {
+            for (Funcionario funcionario : funcionarioDAO.listarTodos(usuarioCpfLogado)) {
                 tableModel.addRow(new Object[]{
                     funcionario.getCpf(),
                     funcionario.getNome(),

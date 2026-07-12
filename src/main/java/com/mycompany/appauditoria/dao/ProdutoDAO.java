@@ -41,26 +41,42 @@ public class ProdutoDAO {
     }
     
     // Busca todos os produtos cadastrados no banco de dados
-    public List<Produto> listarTodos() throws SQLException {
+    public List<Produto> listarTodos(String usuarioCpfLogado) throws SQLException {
         String sql = "SELECT * FROM produto";
         List<Produto> listaProdutos = new ArrayList<>();
 
-        try (Connection conn = getConnection(); 
-             PreparedStatement ps = conn.prepareStatement(sql); 
-             ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = getConnection()) {
+            try (PreparedStatement ps = conn.prepareStatement(sql); 
+                ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                Produto produto = new Produto(
-                    rs.getString("codigo"),
-                    rs.getString("descricao"),
-                    rs.getBigDecimal("valor"),
-                    rs.getInt("estoque")
-                );
-                
-                listaProdutos.add(produto);
+                while (rs.next()) {
+                    Produto produto = new Produto(
+                        rs.getString("codigo"),
+                        rs.getString("descricao"),
+                        rs.getBigDecimal("valor"),
+                        rs.getInt("estoque")
+                    );
+                    
+                    listaProdutos.add(produto);
+                }
             }
+            
+            auditarListagem(conn, usuarioCpfLogado, "produto");
         }
         return listaProdutos;
+    }
+    
+    // Registra a listagem de produtos na tabela de auditoria
+    private void auditarListagem(Connection conn, String usuarioCpfLogado, String tabela) {
+        String sql = "INSERT INTO auditoria (usuarioCpf, tabelaAfetada, operacao, registroId, dadosAntigos, dadosNovos) VALUES (?, ?, 'SELECT', 'TODOS', NULL, NULL)";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, usuarioCpfLogado);
+            ps.setString(2, tabela);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao gravar auditoria de listagem (" + tabela + "): " + e.getMessage());
+        }
     }
     
     // Atualiza os dados de um produto no banco de dados
