@@ -11,7 +11,6 @@ import com.mycompany.appauditoria.model.Funcionario;
 import com.mycompany.appauditoria.model.Usuario;
 import java.sql.Connection;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 24/06/2026 às 17:30
+-- Tempo de geração: 12/07/2026 às 21:24
 -- Versão do servidor: 8.0.46
 -- Versão do PHP: 8.2.31
 
@@ -31,7 +31,7 @@ CREATE TABLE `auditoria` (
   `id` bigint NOT NULL,
   `usuarioCpf` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
   `tabelaAfetada` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `operacao` enum('INSERT','UPDATE','DELETE','LOGIN') COLLATE utf8mb4_general_ci NOT NULL,
+  `operacao` enum('SELECT','INSERT','UPDATE','DELETE','LOGIN') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `registroId` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `dadosAntigos` json DEFAULT NULL,
   `dadosNovos` json DEFAULT NULL,
