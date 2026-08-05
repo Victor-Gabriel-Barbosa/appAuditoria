@@ -2,6 +2,32 @@
 
 Uma aplicação de auditoria desenvolvida em Java, focada em fornecer uma interface gráfica moderna e persistência de dados em base de dados relacional.
 
+## 📷 Capturas de Tela
+
+**Página Inicial**
+> <img width="1917" height="1015" alt="image" src="https://github.com/user-attachments/assets/b709808f-81dd-443a-8f1c-179d5bf065b1" />
+
+**Menu Principal**
+> <img width="1916" height="1015" alt="image" src="https://github.com/user-attachments/assets/c7740544-8524-4dc2-bc69-f264e108fb6c" />
+
+**Página de Cadastro de Funcionário**
+> <img width="1917" height="1008" alt="image" src="https://github.com/user-attachments/assets/71e76502-3abf-4810-aba2-d92488499cc7" />
+
+**Página de Cadastro de Gerente**
+> <img width="1917" height="1015" alt="image" src="https://github.com/user-attachments/assets/225bf6ef-7824-4010-8705-b862588918a7" />
+
+**Página de Cadastro de Produto**
+> <img width="1917" height="1011" alt="image" src="https://github.com/user-attachments/assets/f0adc068-7c60-4f66-a662-3fbc29d19ecb" />
+
+**Página de Gerenciamento de Funcionários**
+> <img width="1916" height="1015" alt="image" src="https://github.com/user-attachments/assets/9842d866-2717-4aec-b580-b87824a940ff" />
+
+**Página de Gerenciamento de Gerentes**
+> <img width="1917" height="1012" alt="image" src="https://github.com/user-attachments/assets/a81210f2-bec9-494e-9972-6b8a07791174" />
+
+**Página de Gerenciamento de Produtos**
+> <img width="1917" height="1015" alt="image" src="https://github.com/user-attachments/assets/d4ad503d-036d-4ecb-b8c9-5e72bdf59fcd" />
+
 ## 🛠 Tecnologias Utilizadas
 
 O projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
